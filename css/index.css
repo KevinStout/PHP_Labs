@@ -1,0 +1,159 @@
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    /*  use em for size or another relative measurement */
+    font-size: 1em;
+    background-color: aqua;
+    background-image: url("../media/background.jpg");
+    /* size should be should be cover or contain */
+    background-size: cover;
+    background-repeat:no-repeat;
+}
+
+header{
+    background-color: #43504f;
+    color: #abbac1;    
+   /* opacity is optional - if you have a background photo, it will allow the photo to show through the color */
+    opacity: 0.8;
+    width: 100%;
+    margin: 0.1%, 0.15%, 0.1%, 0.15%;
+}
+
+footer {
+    /* I may put this back in at some point */
+    /* position: fixed; 
+    left: 0;
+    bottom: 0; */
+    width: 100%;
+    background-color: #43504f;
+    color: #abbac1;
+    text-align: center;
+    opacity: 0.8;
+    margin: 0.1%, 0.15%, 0.1%, 0.15%;
+    z-index: -1;
+}
+
+article{
+   /* use the settings shown below */
+    display: flex;
+    flex-direction:column;
+    height:500px;
+    flex-wrap:wrap;
+    justify-content:space-between;
+}
+
+section{
+    flex:1;
+    background-color: #6894ad;
+    /*  use % for padding, height and width */
+    padding: 1%;    
+    min-width: 10%;
+    max-width: 99.5%;
+    min-height: 10%;
+    margin: 0.15%;
+   /* opacity is optional - if you have a background photo, it will allow the photo to show through the color */
+    opacity: 0.7;
+}
+
+h1{
+    /* font-family: set in the body /*
+   /*  use em for size or another relative measurement */
+    font-size: 1.5em;
+    color: #f4f8fa;
+    text-shadow: 0.2em;
+    text-align: left;
+    padding: 0.5%;
+    opacity: 1;
+}
+
+h2{
+    /* font-family: set in the body */
+    color: #f4f8fa;
+   /*  use em for size or another relative measurement */
+    font-size: 1.3em;
+    text-shadow: 0.2em;
+    /*  use % for width */
+    width:99%;
+    background-color: #29578E;
+    /* can use pixels for padding */
+    padding: 0.5%;
+   /* opacity is optional - if you have a background photo, it will allow the photo to show through the color */
+    opacity: 1;
+    /*  border-radius should be pixels */
+    border-radius: 1px;
+    opacity: 1;
+}
+nav {
+    margin:0px;
+    width:100%;
+    height:auto;
+}
+nav ul {
+    background: #4c6f99;
+    /* box-shadow settings can be whatever you want */
+    box-shadow: 6px 6px 6px black;
+    padding: 10px;
+    border-radius: 10px; 
+    list-style: none;
+    position: relative;
+    color: black;
+    /* font-weight can be whatever you want */
+    font-weight: 100;
+}
+nav ul li {
+    display:inline-table;
+    margin:10px;
+    padding:5px;
+    color: rgb(250, 6, 217);
+}
+nav ul li:hover {
+    color: blue;
+    /*  font-size should be a relative measurement */
+    font-size: inherit;
+}
+nav ul li a {
+    display: block;
+    /* the padding can be in pixels */ 
+    padding: 1px;
+    color: #f4f8fa;
+    text-shadow: none;
+    text-decoration: none;
+}
+nav ul li:hover a {
+    color: #a18d59;
+    text-decoration: none;
+}
+nav ul li:hover > ul {
+    display:flex;
+    flex-direction:column;
+}
+
+nav ul ul {
+    display: none;
+    background: brown;
+    /* the border color can be whatever you want */
+    border:2px solid black;
+    border-radius: 0px; 
+    padding: 0px;
+    position: absolute; 
+   /*  font-size should be a relative measurement */
+    font-size: 1em;
+    z-index:10; 
+}
+
+nav ul ul li {
+    display:block;
+    /*  you can adjust the border top and bottom colors to whatever you want */
+    border-top: 1px solid black;
+    border-bottom: 1px solid black; 
+    position: relative;
+    text-align: center;
+    background: #025d9b;
+}
+nav ul ul li a {
+    padding: 15px;
+    color: hotpink;
+}     
+nav ul ul li a:hover {
+    background: blueviolet;
+    color: yellow;
+} 
