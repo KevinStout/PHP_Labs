@@ -3,13 +3,13 @@
     $numberFloat = 4.56;
     $words = "hello";
     $trueFalse = true;
-    $nullValue = null;
+    $cars = array("volvo", "BMW", "Toyota");
 
     TestingData($number);
     TestingData($numberFloat);
     TestingData($words);
     TestingData($trueFalse);
-    TestingData($nullValue);
+    TestingData($cars);
 
     function TestingData($value){
         switch ($value) {
@@ -29,9 +29,12 @@
                 echo "this is a bool with a value of '".$value."'";
                 echo "<br/>";
                     break;
-            case is_($value):
-                echo "this is a null with a value of "."'".$value."'";
+            case is_array($value):
+            $arrayLength = sizeof($value);
+             for ($i=0; $i < $arrayLength ; $i++) { 
+                echo "this is an array with a value of "."'".$value[$i]."'"." in position ".$i;
                 echo "<br/>";
+             };                
                     break;
             default:
                 echo "did not work";
