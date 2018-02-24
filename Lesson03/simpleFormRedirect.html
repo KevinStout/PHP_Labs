@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <section>
+        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+            <fieldset id="addressBox" class="center">
+                <legend>Somthing That goes with the form</legend>
+                <p style="text-align:left;margin-top:-10px;"><span class="error">* required fields</span></p>
+
+                <p><label for="name" id="labelFormat">Name:</label>
+                <input class="formEntry" id="name" name="name" size="30" style="width:300px" value="<?php echo $name ?>"/>
+                *<br><span class="error"><?php echo $nameErr;?></span><br></p>
+
+                <p><label for="email" id="labelFormat">Email:</label>
+                <input class="formEntry" id="email" name="email" size="30" style="width:300px" value="<?php echo $email ?>"/>
+                *<br><span class="error"><?php echo $emailErr;?></span><br></p>
+
+                
+            </fieldset>
+        </form>
+    </section>
+</body>
+</html>
