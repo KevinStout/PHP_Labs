@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +14,103 @@
     <section>
         <?php
 
-        
+            $nameErr= $emailErr= $genderErr= $websiteErr= $interestErr= "";
+            $name= $email= $gender= $website= $interest= $comment= "";
+            $alaskaSelect= $californiaSelect= $coloradoSelect= $maineSelect= $michiganSelect= $montanaSelect= $utahSelect= "";
+
+            if($_SERVER["REQUEST_METHOD"] == "POST"){
+                if(empty($_POST["name"])){
+                    $nameErr = "Name is required";
+                }else{
+                    $name = test_input($_POST["name"]);
+                    $_SESSION["name"] = $name;
+                    $pattern = "/^[a-zA-Z ]*$/";
+
+                    if(preg_match($pattern, $name)!==1){
+                        $nameErr = "Only letters and white space allowed";
+                    }
+                }
+
+                if(empty($_POST["email"])){
+                    $emailErr = "Email is required";
+                }else{
+                    $email = test_input($_POST["email"]);
+                    $_SESSION["email"] = $email;
+
+                    if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+                        $emailErr = "Invalid email format";
+                    }
+                }
+
+                if(empty($_POST["website"])){
+                    $website = "";
+                }else{
+                    $website = $_POST["website"];
+                    $pattern = "/\b(?:(?:https?|ftp):\/\/|www|ftp\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i";
+                    if(preg_match($pattern, $website) !==1){
+                        $websiteErr = $website." is an ivalid URL (preg match error)";
+                    }else if (filter_var($website, FILTER_VALIDATE_URL) !==1){
+                        $websiteErr = $website." is an invalid URL (filter_var error)";
+                    }else{
+                        $website = test_input($_POST["website"]);
+                    }
+                }
+
+                if(empty($_POST["comment"])){
+                    $comment = "";
+                }else{
+                    $comment = test_input($_POST["comment"]);
+                }
+
+                if(empty($_POST["gender"])){
+                    $genderErr = "Gender is required";
+                }else{
+                    $gender = test_input($_POST["gender"]);
+                }
+
+                if(empty($_POST["interest"])){
+                    $interestErr = "Please select your ski type";
+                }else{
+                    $interest = test_input($_POST["interest"]);
+                }
+
+                if(!empty($_POST["state"])){
+                    foreach ($_POST["state"] as $value) {
+                        if($value == "alaska"){
+                            $alaskaSelect = "true";
+                        }
+                        if($value == "california"){
+                            $californiaSelect = "true";
+                        }
+                        if($value == "colorado"){
+                            $coloradoSelect = "true";
+                        }
+                        if($value == "maine"){
+                            $maineSelect = "true";
+                        }
+                        if($value == "michigan"){
+                            $michiganSelect = "true";
+                        }
+                        if($value == "montana"){
+                            $montanaSelect = "true";
+                        }
+                        if($value == "utah"){
+                            $utahSelect = "true";
+                        }
+                    }
+                }
+
+                if($nameErr == "" && $emailErr == "" && $genderErr == "" && $websiteErr == "" && $interestErr == ""){
+                    header('Location: congrats.php');
+                }
+            }
+
+            function test_input($data){
+                $data = trim($data);
+                $data = stripslashes($data);
+                $data = htmlspecialchars($data);
+                return $data;
+            }
 
         ?>
 
@@ -30,18 +129,18 @@
 
                 <p><label for="website" id="labelFormat">website:</label>
                 <input class="formEntry" id="website" name="website" size="30" style="width:300px" value="<?php echo $website ?>"/>
-                *<br><span class="error"><?php echo $websiteErr;?></span><br></p>
+                <br><span class="error"><?php echo $websiteErr;?></span><br></p>
 
-                <p><label for="interest" id="labelFormat">Skiing Type</label>
+                <p><label for="interest" id="labelFormat">Skiing Type:</label>
                 <select class="formEntry" name="interest" id="interest" style="text-align:left; width:300px;">
                     <option value="">Please Select A Type Of Skiing</option>
-                    <option <?php if ($interest == "downhill" echo "selected";?> value="downhill">Downhill Skiing</option>
-                    <option <?php if ($interest == "backcountry" echo "selected";?> value="backcountry">Backcountry Skiing</option>
-                    <option <?php if ($interest == "freestyle" echo "selected";?> value="freestyle">Freestyle Skiing</option>
-                    <option <?php if ($interest == "telemark" echo "selected";?> value="telemark">Telemark Skiing</option>
+                    <option <?php if ($interest == "downhill") echo "selected";?> value="downhill">Downhill Skiing</option>
+                    <option <?php if ($interest == "backcountry") echo "selected";?> value="backcountry">Backcountry Skiing</option>
+                    <option <?php if ($interest == "freestyle") echo "selected";?> value="freestyle">Freestyle Skiing</option>
+                    <option <?php if ($interest == "telemark") echo "selected";?> value="telemark">Telemark Skiing</option>
                 </select>*<br><span class="error" style="margin-left:100px;"><?php echo $interestErr;?></span><br></p>
 
-                <p><label for="state" id="labelFormat">Destinations To Ski</label></p>
+                <p><label for="state" id="labelFormat">Destinations To Ski:</label></p>
                 <div class="formEntry" style="flex-inline; margin-left:250px; width:300px;">
                     <input type="checkbox" name="state[]" id="alaska" value="alaska" <?php if ($alaskaSelect) echo "checked";?>>Alaska<br>
                     <input type="checkbox" name="state[]" id="california" value="california" <?php if ($californiaSelect) echo "checked";?>>California<br>
@@ -52,7 +151,7 @@
                     <input type="checkbox" name="state[]" id="utah" value="utah" <?php if ($utahSelect) echo "checked";?>>Utah<br>
                 </div>
 
-                <p><label for="comment" id="labelFormat">Comments:</label>
+                <p><label for="comment" id="labelFormat">Comments:</label><br>
                     <textarea class="formEntry" id="comment" name="comment" style="width:340px; height:200px;"><?php echo $comment ?></textarea>
                 </p>
                 <p>&nbsp;</p>
@@ -66,7 +165,7 @@
                     *</p>
                 </div><br>
 
-                <p style="flex-inline;"><input class="inputButton" type="submit" id="submit" style="clear:both; width:190px;">
+                <p style="flex-inline;"><input class="inputButton" type="submit" name="submit" id="submit" style="clear:both; width:190px;">
                     <input class="inputButton" type="reset" name="reset" id="reset" style="clear:both; width:190px; margin-left:10px;"><br>
                 </p>
             </fieldset>
