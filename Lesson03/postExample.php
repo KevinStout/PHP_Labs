@@ -7,15 +7,15 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/simpleFormRedirect.css">
+    <link rel="stylesheet" href="css/postExample.css">
     <title>Simple Form Redirect</title>
 </head>
 <body>
     <section>
         <?php
 
-            $nameErr= $emailErr= $genderErr= $websiteErr= $interestErr= "";
-            $name= $email= $gender= $website= $interest= $comment= "";
+            $nameErr= $emailErr= $genderErr= $websiteErr= $interestErr= $infoErr= "";
+            $name= $email= $gender= $website= $interest= $comment= $info= "";
             $alaskaSelect= $californiaSelect= $coloradoSelect= $maineSelect= $michiganSelect= $montanaSelect= $utahSelect= "";
 
             if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -60,6 +60,18 @@ session_start();
                     $comment = "";
                 }else{
                     $comment = test_input($_POST["comment"]);
+                }
+
+                if(empty($_POST["info"])){
+                    $info = "";
+                }else{
+                    $info = test_input($_POST["info"]);
+                    $_SESSION["info"] = $info;
+                    $pattern = "/^[a-zA-Z ]*$/";
+
+                    if(preg_match($pattern, $info)!==1){
+                        $infoErr = "Please only type letters here";
+                    }
                 }
 
                 if(empty($_POST["gender"])){
@@ -110,7 +122,7 @@ session_start();
                 $data = stripslashes($data);
                 $data = htmlspecialchars($data);
                 return $data;
-            }
+            }            
 
         ?>
 
@@ -164,6 +176,10 @@ session_start();
                         <input type="radio" name="gender"<?php if (isset($gender)&& $gender=="male") echo "checked";?> value="male">&nbsp;
                     *</p>
                 </div><br>
+
+                <p><label for="info" id="labelFormat">How did you hear about us:</label>
+                <input class="formEntry" id="info" name="info" size="30" style="width:300px" value="<?php echo $info ?>"/>
+                <br><span class="error"><?php echo $infoErr;?></span><br></p>
 
                 <p style="flex-inline;"><input class="inputButton" type="submit" name="submit" id="submit" style="clear:both; width:190px;">
                     <input class="inputButton" type="reset" name="reset" id="reset" style="clear:both; width:190px; margin-left:10px;"><br>
