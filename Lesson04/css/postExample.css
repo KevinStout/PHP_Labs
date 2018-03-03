@@ -1,0 +1,86 @@
+@import url(http://fonts.googleapis.com/css?family=Nixie+One);
+body{
+	font-family: 'Nixie One', cursive;
+	background-image:url('../media/skiing1920x1080.jpeg');
+    background-repeat:no-repeat;
+    color:black;
+    font-size:14pt;
+}
+section{
+	margin-left:50px;
+	background-color:#fdf8db;
+	width:650px; 
+	padding:10px;
+	box-shadow:10px 10px 10px  black;
+}
+h1{
+	font-family: 'Nixie One', cursive;
+	margin-top:10px;
+	margin-bottom:10px;
+	font-size:28pt;
+	text-align:center;
+}
+h2{
+	font-family: 'Nixie One', cursive;
+	font-size:22pt;
+	text-align:center;
+}
+
+input:focus { 
+    background-color: #e9cea1;
+    color:black;
+}
+p{
+	text-align:center;
+	font-size:14pt;
+	font-weight:900;
+}
+.error{
+	color:red;
+	font-size:14pt;
+}
+.inputButton{
+	font-size:14pt;
+	width: 100px; 
+	height: 30px;
+	font-size:12pt;
+	background-color: #e9cea1;
+	color:black;
+	font-family: 'Nixie One', cursive;
+	font-weight:900;
+	display:inline;
+}
+.formEntry{
+	text-align:left;
+	width:200px;
+	font-size:14pt;
+	color:black;
+}
+#labelFormat{
+	text-align:right;
+	width:200px;
+	float:left;
+	margin-bottom:0px;
+	margin-top:0px;
+}
+#labelFormat2{
+	text-align:right;
+	float:left;
+}
+.center   {
+  margin-left:auto; 
+  margin-right:auto;
+  }
+legend{
+	font-size:175%;
+	font-weight:900;
+	padding-top:15px;
+	padding-bottom:15px;
+	margin-left:10px;
+	text-shadow:1px 1px 3px #a87830;
+	
+}
+label{
+	margin-top:0px;
+	margin-bottom:0px;
+}
