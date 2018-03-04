@@ -20,8 +20,6 @@ imageline($im, 0, 0, 300, 100, $white);
 imageline($im, 0, 100, 300, 0, $white);
 imageline($im, 150, 0, 150, 100, $white);
 
-
-
 imagepng($im);
 imagedestroy($im);
 ?>
