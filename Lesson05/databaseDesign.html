@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>database design</title>
+</head>
+<body>   
+    <h1>Table Name : Column Names</h1> 
+    <ul>
+        <li>Guest: GuestID (PK), FirstName, LastName, DateOfBirth, Street, City, State, Zip, PhoneNum</li>
+        <li>Reservation: ReservationID (PK), DateIn, DateOut, GuestID (FK), RoomTypeID (FK)</li>
+        <li>RoomType: RoomTypeID (PK), Description, MaxCapacity</li>
+        <li>Room: RoomID (PK), Number, Status, Smoking, RoomTypeID (FK)</li>
+        <li>RoomRentals: RoomID (FK), Date, RoomTypeID (FK), GuestID (FK), ReservationID (FK)</li>
+        <li>HouseKeeper: HKID (PK), HKFirstName, HKLastName, DateOfBirth, Street, City, State, Zip, PhoneNum</li>
+        <li>CleaningAssignments: CANo (PK), CleanDate, RoomID (FK), HKID (FK)</li>
+    </ul>
+    <br>
+    <h1>Scripts for making the Database</h1>
+    <p>CREATE DATABASE Hotel</p>
+    <br>
+    <h1>Scripts for making the Tables (This is easier to read if you veiw the page source)</h1>
+    <ul>
+        <li>USE Hotle;
+                CREATE TABLE Guest (
+                    GuestID INT PRIMARY KEY,
+                    FirstName CHAR(20),
+                    LastName CHAR(20),
+                    DateOfBirth DATE,
+                    Street CHAR(30),
+                    City CHAR(20),
+                    State CHAR(20),
+                    Zip INT,
+                    PhoneNum CHAR(12)
+                );
+        </li>
+        <li>
+            USE Hotel;
+            INSERT INTO Guest VALUES
+	        (1001, 'Kevin', 'Stout', '1989-2-18', '123 E Front st', 'Traverse City', 'Michigan', 49686, '231-555-1234'),
+	        (1002, 'Heather', 'Gain', '1970-8-21', '321 Garfield Ave','Traverse City', 'Michigan', 49686, '231-555-5495' ),
+	        (1003, 'James', 'Khul', '1995-3-12', '102 Willow St', 'Traverse City', 'Michigan', 49684, '231-555-7895' ),
+	        (1004, 'Lain', 'Petters', '1959-4-4', '1257 Ceder Ave', 'Ceder', 'Michigan', 49687, '231-555-3498' ),
+	        (1005, 'Goerge', 'Lardy', '1975-5-7', '165 High Lake rd', 'Traverse City', 'Michigan', 49686, '231-555-4687' ),
+	        (1006, 'Dave', 'Looth', '1968-8-19', '276 Penisula dr', 'Traverse City', 'Michigan', 49689, '231-555-7985' ),
+	        (1007, 'Lilith', 'Khul', '1994-6-16', '102 Willow st', 'Traverse City', 'Michigan', 49684, '231-555-3528' ),
+	        (1008, 'Jill', 'Looth', '1969-7-8', '276 Penisula dr', 'Traverse City', 'Michigan', 49689, '231-555-1585' ),
+	        (1009, 'Bob', 'Petters', '1959-3-20', '1257 Ceder Ave', 'Ceder', 'Michigan', 49687, '231-555-1756' );
+        </li>
+        <li>
+            USE Hotel;
+            CREATE TABLE Reservation (
+                ReservationID INT PRIMARY KEY,
+                DateIn DATE,
+                DateOut DATE,
+                GuestID INT,
+                RoomTypeID INT
+            );
+        </li>
+        <li>
+            USE Hotel;
+            INSERT INTO Reservation VALUES
+            (70001, '2017-01-02','2017-01-20',1001,100),
+            (70002, '2017-01-08','2017-01-20',1007,101),
+            (70003, '2017-01-03','2017-01-20',1002,102),
+            (70004, '2017-01-08','2017-01-30',1002,103),
+            (70005, '2017-01-10','2017-01-23',1008,104),
+            (70006, '2017-01-04','2017-01-20',1003,105),
+            (70007, '2017-01-05','2017-01-21',1004,106),
+            (70008, '2017-01-09','2017-01-30',1005,100),
+            (70009, '2017-06-01','2017-06-14',1006,101),
+            (70010, '2017-06-02','2017-06-18',1009,102),
+            (70011, '2017-07-30','2017-08-12',1003,103),
+            (70012, '2017-08-12','2017-08-23',1006,104),
+            (70013, '2017-09-05','2017-09-17',1001,105),
+            (70014, '2017-10-10','2017-10-16',1009,106),
+            (70015, '2017-10-10','2017-10-16',1009,101),
+            (70016, '2017-11-04','2017-11-10',1004,104),
+            (70017, '2017-11-04','2017-11-11',1002,100),
+            (70018, '2017-11-04','2017-11-12',1005,101),
+            (70019, '2017-11-04','2017-11-13',1007,101),
+            (70020, '2017-11-05','2017-11-14',1001,104),
+            (70021, '2017-11-05','2017-11-15',1005,101),
+            (70022, '2017-11-05','2017-11-16',1009,101),
+            (70023, '2017-11-05','2017-11-17',1003,101);
+        </li>
+        <li>
+            USE Hotel;
+            CREATE TABLE Room (
+                RoomID INT PRIMARY KEY,
+                Number INT,
+                Status CHAR(30),
+                Smoking CHAR(3),
+                RoomTypeID INT
+            );
+        </li>
+        <li>
+            USE Hotel;
+            INSERT INTO Room VALUES
+            (01, 101,'Ready','Yes',104),
+            (02, 102,'Unready','No',100),
+            (03, 103,'Repairs Needed','No',101),
+            (04, 104,'Ready','No',101),
+            (05, 105,'Ready','No',101),
+            (06, 106,'Ready','No',101),
+            (07, 107,'Unready','No',101),
+            (08, 108,'Ready','No',101),
+            (09, 109,'Ready','No',101),
+            (10, 201,'Ready','No',104),
+            (11, 202,'Unready','No',105),
+            (12, 203,'Ready','No',101),
+            (13, 204,'Ready','No',101),
+            (14, 205,'Unready','No',103),
+            (15, 206,'Ready','No',101),
+            (16, 207,'Ready','No',101),
+            (17, 208,'Unready','No',101),
+            (18, 209,'Ready','No',101),
+            (19, 301,'Unready','No',101),
+            (20, 302,'Ready','No',101),
+            (21, 303,'Unready','Yes',101),
+            (22, 304,'Ready','Yes',103),
+            (23, 305,'Ready','No',105),
+            (24, 306,'Repairs Needed','No',106); 
+        </li>
+        <li>
+            USE Hotel;
+            CREATE TABLE HouseKeeper (	
+                HKID INT NOT NULL AUTO_INCREMENT,
+                HKFirstName CHAR(20),
+                HKLastName CHAR(20),
+                DateOfBirth DATE,
+                Street CHAR(30),
+                City CHAR(20),
+                State CHAR(20),
+                Zip INT,
+                PhoneNum CHAR(12), 
+                PRIMARY KEY (HKID)
+            );
+        </li>
+        <li>
+            USE Hotel;
+            INSERT INTO HouseKeeper VALUES
+            (6000, 'Joe', 'Doe', '1992-2-1', '123 E Front st', 'Traverse City', 'Michigan', 49686, '231-555-1234'),
+            (6001, 'Jain', 'Doe', '1992-2-2', '123 E Front st', 'Traverse City', 'Michigan', 49686, '231-555-1235'),
+            (6002, 'Kim', 'Fich', '1992-2-3', '125 E Front st', 'Traverse City', 'Michigan', 49686, '231-555-1236'),
+            (6003, 'Lain', 'Breach', '1992-2-4', '126 E Front st', 'Traverse City', 'Michigan', 49686, '231-555-1237'),
+            (6004, 'Jane', 'Groo', '1992-2-5', '127 E Front st', 'Traverse City', 'Michigan', 49686, '231-555-1238'),
+            (6005, 'Blake', 'Birch', '1992-2-6', '128 E Front st', 'Traverse City', 'Michigan', 49686, '231-555-1239'),
+            (6006, 'Trish', 'Green', '1992-2-7', '129 E Front st', 'Traverse City', 'Michigan', 49686, '231-555-1240'),
+            (6007, 'Jim', 'Boss', '1992-2-8', '130 E Front st', 'Traverse City', 'Michigan', 49686, '231-555-1241');
+            
+        </li>
+        <li>
+            USE Hotel;
+            CREATE TABLE CleaningAssignments (
+                CANo INT PRIMARY KEY,
+                CleanDate DATE,
+                RoomID INT,
+                HKID INT
+            );
+        </li>
+        <li>      
+            USE Hotel;      
+            INSERT INTO CleaningAssignments VALUES
+            (700, '2017-11-04',1000001,6001),
+            (701, '2017-11-04',1000002,6003),
+            (702, '2017-11-04',1000003,6002),
+            (703, '2017-11-04',1000006,6005),
+            (704, '2017-11-05',1000001,6004),
+            (705, '2017-11-05',1000002,6001),
+            (706, '2017-11-05',1000003,6003),
+            (707, '2017-11-05',1000004,6002);
+        </li>
+        <li>
+            USE Hotel;
+            CREATE TABLE RoomType (
+                RoomTypeID INT IDENTITY(100, 1) PRIMARY KEY,
+                Description CHAR(20),
+                MaxCapacity INT
+            );
+        </li>
+        <li>
+            USE Hotel;
+            INSERT INTO RoomType VALUES
+            (100, 'SingleQueen', 2),
+            (101, 'DoubleQueen', 4),
+            (102, 'SingleKing',2),
+            (103, 'DoubleKing', 4),
+            (104, 'Studio', 5),
+            (105, 'JuniorSuite', 6),
+            (106, 'MasterSuite', 8),
+            (107, 'Conference', 20); 
+        </li>
+        <li>
+            USE Hotel;
+            CREATE TABLE RoomRentals (
+                RoomID INT,
+                Date DATE,
+                RoomTypeID INT,
+                GuestID INT NULL,
+                ReservationID INT NULL
+            );
+        </li>
+        <li>
+            USE Hotel;
+            INSERT INTO RoomRentals VALUES
+            (1000001,'2017-11-04',104,1004,70016),
+            (1000002,'2017-11-04',100,1002,70017),
+            (1000003,'2017-11-04',101,1005,70018),
+            (1000004,'2017-11-04',101,NULL, NULL),
+            (1000005,'2017-11-04',101,NULL,NULL),
+            (1000006,'2017-11-04',101,1007,70019),
+            (1000007,'2017-11-04',101,NULL,NULL),
+            (1000008,'2017-11-04',101,NULL,NULL),
+            (1000009,'2017-11-04',101,NULL,NULL),
+            (1000010,'2017-11-05',104,1001,70020),
+            (1000011,'2017-11-05',100,NULL,NULL),
+            (1000012,'2017-11-05',101,1005,70021),
+            (1000013,'2017-11-05',101,1009,70022),
+            (1000014,'2017-11-05',101,NULL,NULL),
+            (1000015,'2017-11-05',101,NULL,NULL),
+            (1000016,'2017-11-05',101,1003,70023),
+            (1000017,'2017-11-05',101,NULL,NULL);
+        </li>
+        <li>
+            USE Hotel;
+            ALTER TABLE Reservation
+            ADD CONSTRAINT FK_Reservation_Guest
+            FOREIGN KEY(GuestID)
+            REFERENCES Guest(GuestID);
+        </li>
+        <li>
+            USE Hotel;
+            ALTER TABLE Reservation
+            ADD CONSTRAINT FK_Reservation_RoomType
+            FOREIGN KEY(RoomTypeID)
+            REFERENCES RoomType(RoomTypeID);
+        </li>
+        <li>
+            USE Hotel;
+            ALTER TABLE Room
+            ADD CONSTRAINT FK_Room_RoomType
+            FOREIGN KEY(RoomTypeID)
+            REFERENCES RoomType(RoomTypeID);
+        </li>
+        <li>
+            USE Hotel;
+            ALTER TABLE CleaningAssignments
+            ADD CONSTRAINT FK_CleaningAssignments_Room
+            FOREIGN KEY(RoomID)
+            REFERENCES Room(RoomID);
+        </li>
+        <li>      
+            USE Hotel;      
+            ALTER TABLE CleaningAssignments
+            ADD CONSTRAINT FK_CleaningAssignments_HouseKeeper
+            FOREIGN KEY(HKID)
+            REFERENCES HouseKeeper(HKID);
+        </li>
+        <li>
+            USE Hotel;
+            ALTER TABLE RoomRentals
+            ADD CONSTRAINT FK_RoomRentals_Room
+            FOREIGN KEY(RoomID)
+            REFERENCES Room(RoomID);
+        </li>
+        <li>
+            USE Hotel;
+            ALTER TABLE RoomRentals
+            ADD CONSTRAINT FK_RoomRentals_RoomType
+            FOREIGN KEY(RoomTypeID)
+            REFERENCES RoomType(RoomTypeID);
+        </li>
+        <li>      
+            USE Hotel;      
+            ALTER TABLE RoomRentals
+            ADD CONSTRAINT FK_RoomRentals_Guest
+            FOREIGN KEY(GuestID)
+            REFERENCES Guest(GuestID);
+        </li>
+        <li>        
+            USE Hotel;    
+            ALTER TABLE RoomRentals
+            ADD CONSTRAINT FK_RoomRentals_Reservation
+            FOREIGN KEY(ReservationID)
+            REFERENCES Reservation(ReservationID);
+        </li>
+    </ul>
+    
+</body>
+</html>
