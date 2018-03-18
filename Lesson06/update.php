@@ -1,5 +1,6 @@
 <?php
 $mysqli = mysqli_connect("localhost", "root", "", "people");
+
 if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());
     exit();
@@ -24,4 +25,5 @@ function test_input($data) {
     $data = htmlspecialchars($data);
     return $data;
 }
+
 ?>

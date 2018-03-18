@@ -1,0 +1,42 @@
+body{
+	background-image:url('../media/background.jpg');
+	background-size:cover;
+	background-position: top left;
+	background-repeat: no-repeat;
+	text-align:center;
+	margin-left:auto;
+	margin-right:auto;
+}
+h1{
+    color: whitesmoke;
+    margin-top:150px;
+    font-size: 400%;
+} h2{
+    color:whitesmoke;
+    font-size: 250%;
+}
+nav{
+	display:flex;
+	width:450px;
+    background-color:rgba(35, 170, 35, 0.5);    
+	opacity:.8;	
+	border-radius:25px;	
+	box-shadow:2px 2px gray;
+	padding:2%;
+	margin-left:auto;
+	margin-right:auto;
+}
+a:link, a:visited{
+	width:200px;
+	border:1px solid white;
+	border-radius:25px;
+	box-shadow:2px 2px white;
+	padding:2%;
+	color:white;
+	text-decoration:none;
+	margin:10px;
+}	
+a:hover{
+	background-color:white;
+	color:green;
+}	
