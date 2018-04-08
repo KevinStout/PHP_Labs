@@ -1,0 +1,16 @@
+CREATE DATABASE mtbForum;
+
+USE mtbForum;
+CREATE TABLE forum_category (
+    category_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    category_title VARCHAR (150),
+    category_create_time DATETIME,
+    category_owner VARCHAR (150)
+);
+CREATE TABLE forum_thread (
+    thread_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    category_id INT NOT NULL,
+    thread_text TEXT,
+    thread_create_time DATETIME,
+    thread_owner VARCHAR (150)
+);
