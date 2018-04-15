@@ -1,0 +1,29 @@
+﻿body{
+	background-image:url('images/Teuscher-Chocolates.jpg');
+	background-repeat:no-repeat;
+}
+h1{
+	font-family:"Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+	color:peru;
+	text-shadow: 2px 2px 2px black;
+}
+h2{
+	font-family:"Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+	color:peru;
+	text-shadow: 2px 2px 2px black;
+	border-bottom:2px peru solid;
+}
+p{
+	margin-left:0.5in;
+	font-family:"Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+	font-size:12pt;
+}
+#chocolate{
+	width:70%;
+	border:2px peru solid;
+	box-shadow:5px 5px 5px peru;
+	background-color:white;
+	opacity:.9;
+	padding:20px;
+}
+

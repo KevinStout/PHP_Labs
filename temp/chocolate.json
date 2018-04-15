@@ -1,0 +1,28 @@
+{"chocolatier":[
+    {"manufacturer":"Godiva",
+        "founder":"Joseph Draps",
+        "city":"Brussels",
+        "state":" ",
+        "country":"Belgium"},
+    {"manufacturer":"Teuscher",
+        "founder":"Dolf Family, 70 years ago",
+        "city":"Zurich",
+        "state":" ",
+        "country":"Switzerland"},
+    {"manufacturer":"Vosges Haut-Chocolat",
+        "founder":"Katrina Markoff",
+        "city":"Chicago",
+        "state":"Illinois",
+        "country":"USA"},
+    {"manufacturer":"Scharffen Berger Chocolate Maker, Inc",
+        "founder":"Robert Steinberg and John Scharffenberger, 1997, S",
+        "city":"Berkeley",
+        "state":"California",
+        "country":"USA"},
+    {"manufacturer":"Jacques Torres Chocolate",
+        "founder":"Jacques Torres, 2000, New York",
+        "city":"New York",
+        "state":"New York",
+        "country":"USA"}
+    ]
+}

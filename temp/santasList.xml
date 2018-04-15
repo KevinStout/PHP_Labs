@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<christmasList>
+    <child>
+        <status>Nice</status>
+        <name>Susie Lou Who</name>
+        <age>5</age>
+        <request>Barbie</request>
+    </child>
+    <child>
+        <status>Nice</status> 
+        <name>Elmo Jetson</name>
+        <age>10</age>
+        <request>Airplane</request>
+    </child>
+    <child>
+        <status>Naughty</status> 
+        <name>Scrappy Doo</name>
+        <age>1</age>
+        <request>Cushy bed</request>
+    </child>
+</christmasList>

@@ -1,0 +1,18 @@
+﻿body{
+  background-color:darkorange;
+  background-image:url('images/pattern.png');
+  color:black;
+  font-family: "Script MT Bold", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+section{
+  width:700px;
+  background-color:peachpuff;
+  opacity:.9;
+  padding:0px 20px 5px 20px;
+}
+h1{
+   text-shadow:2px 2px 2px black;
+   color:white;
+   font-size:2em;
+}	
+

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<chocolate>
+	<manufacturer>
+		<name>Godiva</name>
+		<founder>Joseph Draps, 1920s</founder>
+		<country>Brussels, Belgium</country>
+	</manufacturer>
+	<manufacturer>
+		<name>Teuscher</name>
+		<founder>Dolf Family, 70 years ago</founder>
+		<country>Zurich, Switzerland</country>
+	</manufacturer>
+	<manufacturer>
+		<name>Vosges Haut-Chocolat</name>
+		<founder>Katrina Markoff</founder>
+		<country>Chicago, Illinois, USA</country>
+	</manufacturer>
+	<manufacturer>
+		<name>Scharffen Berger Chocolate Maker, Inc</name>
+		<founder>Robert Steinberg and John Scharffenberger, 1997, San Francisco</founder>
+		<country>Berkeley, California, USA</country>
+	</manufacturer>
+	<manufacturer>
+		<name>Jacques Torres Chocolate</name>
+		<founder>Jacques Torres, 2000, New York</founder>
+		<country>New York, New York, USA</country>
+	</manufacturer>
+</chocolate>
