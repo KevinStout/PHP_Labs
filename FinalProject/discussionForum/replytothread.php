@@ -43,7 +43,7 @@ if (!$_POST) {
       <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
       <p><label for="thread_owner">Your Email Address:</label><br/>
       <input type="email" id="thread_owner" name="thread_owner" size="40"
-         maxlength="150" required="required"></p>
+         maxlength="150" required="required" autofocus></p>
       <p><label for="thread_text">thread Text:</label><br/>
       <textarea id="thread_text" name="thread_text" rows="8" cols="40"
          required="required"></textarea></p>
