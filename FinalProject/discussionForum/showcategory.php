@@ -1,5 +1,5 @@
 <?php
-include 'connect.php';
+include '../connect.php';
 doDB();
 
 //check for required info from the query string
@@ -12,7 +12,7 @@ if (!isset($_GET['category_id'])) {
 $safe_category_id = mysqli_real_escape_string($mysqli, $_GET['category_id']);
 
 //verify the category exists
-$verify_category_sql = "SELECT category_title FROM forum_category WHERE category_id = '".$safe_category_id."'";
+$verify_category_sql = "SELECT category_title FROM ks_forum_category WHERE category_id = '".$safe_category_id."'";
 $verify_category_res =  mysqli_query($mysqli, $verify_category_sql) or die(mysqli_error($mysqli));
 
 if (mysqli_num_rows($verify_category_res) < 1) {
@@ -26,7 +26,7 @@ if (mysqli_num_rows($verify_category_res) < 1) {
 	}
 
 	//gather the threads
-	$get_thread_sql = "SELECT thread_id, thread_text, DATE_FORMAT(thread_create_time, '%b %e %Y<br/>%r') AS fmt_thread_create_time, thread_owner FROM forum_thread WHERE category_id = '".$safe_category_id."' ORDER BY thread_create_time ASC";
+	$get_thread_sql = "SELECT thread_id, thread_text, DATE_FORMAT(thread_create_time, '%b %e %Y<br/>%r') AS fmt_thread_create_time, thread_owner FROM ks_forum_thread WHERE category_id = '".$safe_category_id."' ORDER BY thread_create_time ASC";
 	$get_thread_res = mysqli_query($mysqli, $get_thread_sql) or die(mysqli_error($mysqli));
 
 	//create the display string

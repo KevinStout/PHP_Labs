@@ -1,5 +1,5 @@
 <?php
-include 'connect.php';
+include '../connect.php';
 doDB();
 
 //check to see if we're showing the form or adding the thread
@@ -14,8 +14,8 @@ if (!$_POST) {
    $safe_thread_id = mysqli_real_escape_string($mysqli, $_GET['thread_id']);
 
    //still have to verify category and thread
-   $verify_sql = "SELECT ft.category_id, ft.category_title FROM forum_thread
-                  AS fp LEFT JOIN forum_category AS ft ON fp.category_id =
+   $verify_sql = "SELECT ft.category_id, ft.category_title FROM ks_forum_thread
+                  AS fp LEFT JOIN ks_forum_category AS ft ON fp.category_id =
                   ft.category_id WHERE fp.thread_id = '".$safe_thread_id."'";
 
    $verify_res = mysqli_query($mysqli, $verify_sql)
@@ -74,7 +74,7 @@ if (!$_POST) {
       $safe_thread_owner = mysqli_real_escape_string($mysqli, $_POST['thread_owner']);
 
       //add the thread
-      $add_thread_sql = "INSERT INTO forum_thread (category_id,thread_text,
+      $add_thread_sql = "INSERT INTO ks_forum_thread (category_id,thread_text,
                        thread_create_time,thread_owner) VALUES
                        ('".$safe_category_id."', '".$safe_thread_text."',
                        now(),'".$safe_thread_owner."')";

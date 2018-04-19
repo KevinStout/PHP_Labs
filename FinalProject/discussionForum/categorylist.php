@@ -1,9 +1,9 @@
 <?php
-include 'connect.php';
+include '../connect.php';
 doDB();
 
 //gather the categorys
-$get_category_sql = "SELECT category_id, category_title, DATE_FORMAT(category_create_time,  '%b %e %Y at %r') as fmt_category_create_time, category_owner FROM forum_category ORDER BY category_create_time DESC";
+$get_category_sql = "SELECT category_id, category_title, DATE_FORMAT(category_create_time,  '%b %e %Y at %r') as fmt_category_create_time, category_owner FROM ks_forum_category ORDER BY category_create_time DESC";
 $get_category_res = mysqli_query($mysqli, $get_category_sql) or die(mysqli_error($mysqli));
 
 if (mysqli_num_rows($get_category_res) < 1) {
@@ -26,7 +26,7 @@ END_OF_TEXT;
 		$category_owner = stripslashes($category_info['category_owner']);
 
 		//get number of threads
-		$get_num_thread_sql = "SELECT COUNT(thread_id) AS thread_count FROM forum_thread WHERE category_id = '".$category_id."'";
+		$get_num_thread_sql = "SELECT COUNT(thread_id) AS thread_count FROM ks_forum_thread WHERE category_id = '".$category_id."'";
 		$get_num_thread_res = mysqli_query($mysqli, $get_num_thread_sql) or die(mysqli_error($mysqli));
 
 		while ($thread_info = mysqli_fetch_array($get_num_thread_res)) {

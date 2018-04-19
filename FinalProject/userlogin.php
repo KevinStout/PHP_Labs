@@ -6,14 +6,15 @@ if (($_POST['username']=="") || ($_POST['password']=="")) {
 }
 $display_block="";
 //connect to server and select database
-$mysqli = mysqli_connect("localhost", "root", "", "userAuthDB") or die(mysql_error());
+include 'connect.php';
+doDB();
 
 //use mysqli_real_escape_string to clean the input
 $safe_username = mysqli_real_escape_string($mysqli, $_POST['username']);
 $safe_password = mysqli_real_escape_string($mysqli, $_POST['password']);
 
 //create and issue the query
-$sql = "SELECT f_name, l_name FROM auth_users WHERE username = '".$safe_username."' AND password = '".$safe_password."'";
+$sql = "SELECT f_name, l_name FROM ks_auth_users WHERE username = '".$safe_username."' AND password = '".$safe_password."'";
 
 $result = mysqli_query($mysqli, $sql) or die(mysqli_error($mysqli));
 

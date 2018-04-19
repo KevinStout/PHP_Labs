@@ -1,13 +1,14 @@
 <?php
 	
-	$mysqli = mysqli_connect("localhost", "root", "", "mtbforum");	
+	include 'connect.php';
+	doDB();	
 
 	//if connection fails, stop script execution
 	if (mysqli_connect_errno()) {
 		printf("Connect failed: %s\n", mysqli_connect_error());
 		exit();
 	}
-	$get_forum_category = "SELECT * FROM forum_category";
+	$get_forum_category = "SELECT * FROM ks_forum_category";
 	$get_category_res = mysqli_query($mysqli, $get_forum_category) or die(mysqli_error($mysqli));
 
 	$xml = "<categoryList>";
