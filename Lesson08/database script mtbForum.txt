@@ -1,13 +1,13 @@
-CREATE DATABASE mtbForum;
+CREATE DATABASE ks_mtbForum;
 
-USE mtbForum;
-CREATE TABLE forum_category (
+USE ks_mtbForum;
+CREATE TABLE ks_forum_category (
     category_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     category_title VARCHAR (150),
     category_create_time DATETIME,
     category_owner VARCHAR (150)
 );
-CREATE TABLE forum_thread (
+CREATE TABLE ks_forum_thread (
     thread_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     category_id INT NOT NULL,
     thread_text TEXT,
@@ -15,11 +15,8 @@ CREATE TABLE forum_thread (
     thread_owner VARCHAR (150)
 );
 
-CREATE DATABASE userAuthDB;
-
-USE userAuthDB;
-CREATE TABLE auth_users (
-    id int NOT NULL PRIMARY KEY,
+CREATE TABLE ks_auth_users (
+    user_id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
     f_name VARCHAR(50),
     l_name VARCHAR(50),
     email VARCHAR(150),
@@ -27,6 +24,5 @@ CREATE TABLE auth_users (
     password VARCHAR(41)
 );
 
-USE testdb;
-INSERT INTO auth_users VALUES ( ID, 'Kevin', 'Stout','Stout14@mail.nmc.edu', 'Stout14', '12345678');
+INSERT INTO ks_auth_users VALUES ( ID, 'Kevin', 'Stout','Stout14@mail.nmc.edu', 'Stout14', '12345678');
 

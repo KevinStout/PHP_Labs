@@ -1,4 +1,8 @@
 <?php
+// Start the session
+session_start();
+?>
+<?php
 include '../connect.php';
 doDB();
 
@@ -20,6 +24,10 @@ $add_category_res = mysqli_query($mysqli, $add_category_sql) or die(mysqli_error
 
 //get the id of the last query
 $category_id = mysqli_insert_id($mysqli);
+$_SESSION["category_id"]=$category_id;
+$_SESSION['category_title']=$clean_category_title;
+$_SESSION['thread_text']=$clean_thread_text;
+
 
 //create and issue the second query
 $add_thread_sql = "INSERT INTO ks_forum_thread (category_id, thread_text, thread_create_time, thread_owner) VALUES ('".$category_id."', '".$clean_thread_text."',  now(), '".$clean_category_owner."')";
@@ -35,14 +43,16 @@ $display_block = "<p>The <strong>".$_POST["category_title"]."</strong> category 
 <!DOCTYPE html>
 <html>
 <head>
-<title>New Category Added</title>
+<title>New Topic Added</title>
 <link href="../css/discussion.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<h1>New Category Added</h1>
+<h1>New Topic Added</h1>
 <?php echo $display_block; ?>
 <form>
 <input type="button" name="menu" id="menu" value="Return to Menu" onclick="location.href='discussionMenu.html'">
+<input type="button" name="edit" id="edit" value="Edit Post" onclick="location.href='editCategory.php'">
+<input type="button" name="delete" id="delete" value="Delete Post" onclick="location.href='deleteCategory.php'">
 </form>
 </body>
 </html>
